@@ -8,11 +8,25 @@
         <title>Elected Official Finder</title>
     </head>
     <body>
-        <h1>Enter your address</h1>
-        <form>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Choose your Senator
+            </button>
+            <form method="POST" action="/results">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <!-- <input class="btn dropdown-item" type="button" id="ChuckSchumer">Chuck Schumer</input> -->
+                <button class="dropdown-item">Kirsten Gillibrand</button>
+                <button class="dropdown-item">Chuck Schumer</button>
+            </form>
+            </div>
+        </div>
+
+
+        <!-- <h1>Enter your address</h1> -->
+        <!-- <form>
             <input type="text" name="address" placeholder="Enter your address" action="/results"/>
             <input type="submit" value="Submit"/>
-        </form>
+        </form> -->
     </body>
 
 {% endblock %}
