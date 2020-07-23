@@ -21,10 +21,8 @@ def results():
         return "you're getting the representative page"
     else:
         form = request.form
-        print(form)
         address = form["address"]
         data={
             'address':address,
         }
-        print(data)
     return render_template("results.html", data=data)
