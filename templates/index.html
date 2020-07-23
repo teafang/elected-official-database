@@ -8,25 +8,28 @@
         <title>Elected Official Finder</title>
     </head>
     <body>
-        <div class="dropdown">
+            <form method="POST" action="/results" align="center">
+                <div class="form-group" align="center">
+                    <label for="address"><h1>Address</h1></label>
+                    <input type="text" class="form-control w-50" name="address" width=50%>
+                    <small class="form-text text-muted">We'll never share your address with anyone else.</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+
+
+
+        <!-- <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Choose your Senator
-            </button>
-            <form method="POST" action="/results">
-            <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" class="form-control" name="address">
-                <small class="form-text text-muted">We'll never share your address with anyone else.</small>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            </button> -->
+            
             <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <label for="senator"></label>
                 <button class="dropdown-item" name="senator">Kirsten Gillibrand</button>
                 <button class="dropdown-item" name="senator">Chuck Schumer</button>
             </div> -->
-            </form>
-            </div>
-        </div>
 
 
         <!-- <h1>Enter your address</h1> -->
