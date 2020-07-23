@@ -8,9 +8,21 @@
         <title>Elected Official Finder</title>
     </head>
     <body>
+        <style>
+            .jumbotron {
+            padding: 100px 25px;
+            font-family: Helvetica;
+            }
+        </style>
         <div class="jumbotron">
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <img style="width: 30rem" src="https://lh3.googleusercontent.com/oXya10F1S_RUw_PyjRTfKxK1YspxfTUMejby2ebqNLKM9iSARkGdDHFEAb2rp_hmUw55M36XyQ=w1280"></img>
+                </div>
+            </div<
             <br>
             <!-- Slideshow with pictures -->
+            <div class="col-6">
             <div>
                 <div id="carouselExampleIndicators" class="carousel slide w-25 p-3 mx-auto" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -41,11 +53,12 @@
             <form method="POST" action="/results" align="center">
                 <div class="form-group" align="center">
                     <label class="font-weight-light" for="address"><h1>Welcome! <small class="font-weight-light">Please enter your address</small></h1></label>
-                    <hr class="my-4">
                     <input type="text" class="form-control w-50" name="address" width=50%>
                     <br>
                     <small class="form-text text-muted">We'll never share your address with anyone else.</small>
                 </div>
+                <br>
+                <hr class="my-4">
                 <br>
                 <div class="w-25 mx-auto">
                     <p class="lead">
@@ -53,8 +66,8 @@
                     </p>
                 </div>
             </form>
+            </div>
         </div>
-
         
         <!-- <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
