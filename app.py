@@ -22,9 +22,9 @@ def results():
     else:
         form = request.form
         print(form)
-        user_input = form["address"]
+        address = form["address"]
         data={
-            user_input,
+            'address':address,
         }
         print(data)
     return render_template("results.html", data=data)
