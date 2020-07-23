@@ -8,6 +8,16 @@ from flask import request
 # -- Initialization section --
 app = Flask(__name__)
 
+address_to_officials = {
+    '123 Chambers St':['Chuck Schumer','Kirsten Gillibrand','Bill de Blasio'],
+    '456 Main St':['Kirsten Gillibrand','Chuck Schumer'],
+}
+
+senator_info = {
+    'Chuck Schumer':{'name':'Chuck Schumer','office':'Senator'},
+    'Kirsten Gillibrand':{'name':'Kirsten Gillibrand','office':'Senator'},
+    'Bill de Blasio':{'name':'Bill de Blasio','office':'Mayor'},
+}
 
 # -- Routes section --
 @app.route('/')
@@ -22,7 +32,9 @@ def results():
     else:
         form = request.form
         address = form["address"]
+        senator = address_to_officials[address]
         data={
-            'address':address,
+            'senator':senator,
+            'senator_info':senator_info,
         }
     return render_template("results.html", data=data)

@@ -3,22 +3,23 @@
 {% block title%}{% endblock %}
 
 {% block content%}
-Your address: {{data["address"]}}
+<h1 style="text-align:center;">Your Elected Officials: </h1>
 
-<div class="row" style="width: 40rem;">
-    <div class="col-6">
+<div class="row">
+    {% for senator in data["senator"] %}
+    <div class="col-3">
         <div class="card">
-            <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Chuck_Schumer_official_photo.jpg/1200px-Chuck_Schumer_official_photo.jpg" alt="Chuck">
+            <!-- <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Chuck_Schumer_official_photo.jpg/1200px-Chuck_Schumer_official_photo.jpg" alt="Chuck"> -->
             <div class="card-body">
-            <h5 class="card-title">Chuck Schumer</h5>
+            <h5 class="card-title">{{data["senator_info"][senator]['name']}}</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
             <div class="card-footer">
-            <small class="text-muted">Senator</small>
+            <small class="text-muted">{{data["senator_info"][senator]['office']}}</small>
             </div>
         </div>
     </div>
-    <div class="col-6">
+    <!-- <div class="col-6">
         <div class="card">
             <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Kirsten_Gillibrand%2C_official_photo%2C_116th_Congress.jpg" alt="Kirsten">
             <div class="card-body">
@@ -29,7 +30,7 @@ Your address: {{data["address"]}}
             <small class="text-muted">Senator</small>
             </div>
         </div>
-    </div>
+    </div> -->
   <!-- <div class="card">
     <img class="card-img-top" src="..." alt="Card image cap">
     <div class="card-body">
@@ -40,6 +41,8 @@ Your address: {{data["address"]}}
       <small class="text-muted">Last updated 3 mins ago</small>
     </div>
   </div> -->
+
+{% endfor %}
 </div>
 
 {% endblock %}
