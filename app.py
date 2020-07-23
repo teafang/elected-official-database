@@ -15,9 +15,16 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
   
-@app.route('/results')
+@app.route('/results',methods=["POST","GET"])
 def results():
-    data={
-        
-    }
-    return render_template("results.html")
+    if request.method=="GET":
+        return "you're getting the representative page"
+    else:
+        form = request.form
+        print(form)
+        user_input = form["address"]
+        data={
+            user_input,
+        }
+        print(data)
+    return render_template("results.html", data=data)
