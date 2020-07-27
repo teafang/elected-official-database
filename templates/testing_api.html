@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+
+{% block title%}{% endblock %}
+
+{% block content%}
+<div class="jumbotron">
+    <h2 class="display-4" style="text-align:center;">Your Elected Officials: </h2>
+</div>
+
+<!-- Testing API integration -->
+{{data}}
+{{data.offices|length}}
+{{data.officials|length}}
+
+
+{% endblock %}
+
