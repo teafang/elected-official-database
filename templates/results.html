@@ -33,12 +33,15 @@
             <br>
             <br>
             <div style="line-height: 1.6;">
-            Address:
-            {% for address_line in data['officials'][i]["address"] %}
-                <p class="card-text">{{address_line['line1']}}</p>
-                <p class="card-text">{{address_line['line2']}}</p>
+            Mailing Address:
+            <!-- {{data['officials'][i]["address"]|join()|join('')}} -->
+            {% for address in data['officials'][i]["address"] %}
+            {% for address_line in address %}
+                <p class="card-text" style="margin:0;">{{address[address_line]}}</p>
+                {#<p class="card-text">{{address_line['line2']}}</p>
                 <p class="card-text">{{address_line['line3']}}</p>
-                <p class="card-text">{{address_line['city']}}, {{address_line['state']}}, {{address_line['zip']}}</p>
+                <p class="card-text">{{address_line['city']}}, {{address_line['state']}}, {{address_line['zip']}}</p>#}
+            {% endfor %}
             {% endfor %}
 
             {% for number in data['officials'][i]["phones"] %}
@@ -56,6 +59,7 @@
                     <a href=https://www.youtube.com/{{socials['id']}} target="_blank"><i class="fab fa-youtube fa-3x"></i></a>
                 {% endif %}
             {% endfor %}
+
 
             </div>
             </div>
