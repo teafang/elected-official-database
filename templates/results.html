@@ -3,12 +3,14 @@
 {% block title%}{% endblock %}
 
 {% block content%}
-<h1 style="text-align:center;">Your Elected Officials: </h1>
+<div class="jumbotron">
+    <h2 class="display-4" style="text-align:center;">Your Elected Officials: </h2>
+</div>
 
-<div class="row">
+<div class="row" style="margin:10px;">
     {% for senator in data["senator"] %}
     <div class="col-3">
-        <div class="card">
+        <div class="card border-dark">
             <!-- <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Chuck_Schumer_official_photo.jpg/1200px-Chuck_Schumer_official_photo.jpg" alt="Chuck"> -->
             <div class="card-body">
             <h5 class="card-title">{{data["senator_info"][senator]['name']}}</h5>
