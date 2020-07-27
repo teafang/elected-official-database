@@ -4,7 +4,7 @@
 
 {% block content%}
 <div class="jumbotron">
-    <h2 class="display-4" style="text-align:center;">Your Elected Officials: </h2>
+    <h2 class="display-4" style="text-align:center;">Your Elected Officials </h2>
 </div>
 
 <!-- Testing API integration -->
@@ -14,14 +14,21 @@
 <div class="row" style="margin:10px;">
     {% for title in data["offices"] %}
         {% for i in title["officialIndices"] %}
-    <div class="col-3">
+    <div class="col-3" style="margin-bottom:20px">
         <div class="card border-dark">
+            <div class="card-header" style="padding-top:20px;">
+                <h5 class="card-title">{{data["officials"][i]["name"]}}</h5>
+            </div>
             <div class="card-body">
-            <h5 class="card-title">{{data["officials"][i]["name"]}}</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
             <div class="card-footer">
-            <small class="text-muted">{{title["name"]}}</small>
+            <p class="font-italic">{{title["name"]}}</p>
+            {% if "Democratic Party" in data["officials"][i]["party"] %}
+                <i class="fas fa-democrat icon-large"></i>
+            {% else %}
+                <i class="fas fa-republican icon-large"></i>
+            {% endif %}
             </div>
         </div>
     </div>
