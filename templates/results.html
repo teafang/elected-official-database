@@ -43,8 +43,23 @@
                 <p class="card-text">{{address_line['city']}}, {{address_line['state']}}, {{address_line['zip']}}</p>#}
             {% endfor %}
             {% endfor %}
-            <a href="#" class="btn btn-outline-success">Call</a>
-            <a href="#" class="btn btn-outline-success">Email</a>
+
+            {% for number in data['officials'][i]["phones"] %}
+                <a href="tel:+" + {{number.strip(' (-)')}} class="btn btn-primary">Call</a>
+            {% endfor %}
+            </div>
+            <br>
+            <div>
+            {% for socials in data['officials'][i]['channels'] %}
+                {% if 'Facebook' in socials['type'] %}
+                    <a href=https://www.facebook.com/{{socials['id']}} target="_blank"><i class="fab fa-facebook fa-3x"></i></a>
+                {% elif 'Twitter' in socials['type'] %}
+                    <a href=https://www.twitter.com/{{socials['id']}} target="_blank"><i class="fab fa-twitter-square fa-3x"></i></a>
+                {% elif 'YouTube' in socials['type'] %}
+                    <a href=https://www.youtube.com/{{socials['id']}} target="_blank"><i class="fab fa-youtube fa-3x"></i></a>
+                {% endif %}
+            {% endfor %}
+
 
             </div>
             </div>
