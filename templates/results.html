@@ -14,13 +14,18 @@
 <div class="row" style="margin:10px;">
     {% for title in data["offices"] %}
         {% for i in title["officialIndices"] %}
+    
+    <!-- Cards -->
+
     <div class="col-3" style="margin-bottom:20px">
         <div class="card border-dark">
             <div class="card-header" style="padding-top:20px;">
                 <h5 class="card-title">{{data["officials"][i]["name"]}}</h5>
             </div>
             <div class="card-body">
-            
+        
+        <!-- Phone and website -->
+
             Phone:
             {% for number in data['officials'][i]["phones"] %}
                 <a class="card-text" href="tel:+" + {{number.strip(' (-)')}}>{{number}}</a>
@@ -31,7 +36,14 @@
                 <a class="card-text" href={{website}}>{{website}}</a>
             {% endfor %}
             <br>
+            {% for number in data['officials'][i]["phones"] %}
+                <a href="tel:+" + {{number.strip(' (-)')}} class="btn btn-primary">Call</a>
+            {% endfor %}
             <br>
+            <br>
+        
+        <!-- Address -->
+
             <div style="line-height: 1.6;">
             Mailing Address:
             <!-- {{data['officials'][i]["address"]|join()|join('')}} -->
@@ -43,32 +55,30 @@
                 <p class="card-text">{{address_line['city']}}, {{address_line['state']}}, {{address_line['zip']}}</p>#}
             {% endfor %}
             {% endfor %}
-
-            {% for number in data['officials'][i]["phones"] %}
-                <a href="tel:+" + {{number.strip(' (-)')}} class="btn btn-primary">Call</a>
-            {% endfor %}
             </div>
             <br>
+        
+        <!-- Social Media Icons -->
             <div>
             {% for socials in data['officials'][i]['channels'] %}
                 {% if 'Facebook' in socials['type'] %}
                     <a href=https://www.facebook.com/{{socials['id']}} target="_blank"><i class="fab fa-facebook fa-3x"></i></a>
                 {% elif 'Twitter' in socials['type'] %}
-                    <a href=https://www.twitter.com/{{socials['id']}} target="_blank"><i class="fab fa-twitter-square fa-3x"></i></a>
+                    <a href=https://www.twitter.com/{{socials['id']}} target="_blank"><i class="fab fa-twitter fa-3x" style="color: #1DA1F2;"></i></a>
                 {% elif 'YouTube' in socials['type'] %}
-                    <a href=https://www.youtube.com/{{socials['id']}} target="_blank"><i class="fab fa-youtube fa-3x"></i></a>
+                    <a href=https://www.youtube.com/{{socials['id']}} target="_blank"><i class="fab fa-youtube fa-3x" style="color: #FF0000;"></i></a>
                 {% endif %}
             {% endfor %}
-
-
             </div>
             </div>
+        
+        <!-- Card Footer -->
             <div class="card-footer">
             <p class="font-italic">{{title["name"]}}</p>
             {% if "Democratic Party" in data["officials"][i]["party"] %}
-                <i class="fas fa-democrat icon-large"></i>
+                <i class="fas fa-democrat icon-large" style="color:blue;"></i>
             {% else %}
-                <i class="fas fa-republican icon-large"></i>
+                <i class="fas fa-republican icon-large" style="color:red;"></i>
             {% endif %}
             </div>
         </div>
