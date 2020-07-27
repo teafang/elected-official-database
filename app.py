@@ -3,6 +3,17 @@
 from flask import Flask
 from flask import render_template
 from flask import request
+import requests
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+# load API key from .env
+GOOGLE_CIVIC_API_KEY = os.getenv('GOOGLE_CIVIC_API_KEY')
+
+# API endpoint
+API_endpoint = 'https://www.googleapis.com/civicinfo/v2'
+
 
 
 # -- Initialization section --
