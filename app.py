@@ -61,9 +61,15 @@ def results():
         r = requests.get(API_URL)
         data_all=r.json()
         data={
-            'offices':data_all['offices'],
-            'officials':data_all['officials'],
+            'offices':data_all.get('offices'),
+            'officials':data_all.get('officials'),
         }
-        print(data)
-        print(API_URL)
-    return render_template("results.html", data=data)
+        if data['offices'] and data['officials']:
+            print(data)
+            print(API_URL)
+            return render_template("results.html", data=data)
+        else:
+            data = {
+                "error_message":"Invalid address, please try again in homepage."
+            }
+            return render_template("invalid_address.html",data=data)
