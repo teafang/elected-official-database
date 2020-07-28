@@ -36,6 +36,7 @@
                 <a class="card-text" href={{website}}>{{website}}</a>
             {% endfor %}
             <br>
+            <br>
             {% for number in data['officials'][i]["phones"] %}
                 <a href="tel:+" + {{number.strip(' (-)')}} class="btn btn-primary">Call</a>
             {% endfor %}
