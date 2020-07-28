@@ -27,19 +27,30 @@
         <!-- Phone and website -->
 
             Phone:
-            {% for number in data['officials'][i]["phones"] %}
-                <a class="card-text" href="tel:+" + {{number.strip(' (-)')}}>{{number}}</a>
-            {% endfor %}
+            {% if data['officials'][i].get("phones") is not none %}
+                {% for number in data['officials'][i]["phones"] %}
+                    <a class="card-text" href="tel:+" + {{number.strip(' (-)')}}>{{number}}</a>
+                {% endfor %}
+            {% else %}
+                n/a
+            {% endif %}
             <br>
             Website:
-            {% for website in data['officials'][i]["urls"] %}
-                <a class="card-text" href={{website}}>{{website}}</a>
-            {% endfor %}
+            {% if data['officials'][i].get("urls") is not none %}
+                {% for website in data['officials'][i]["urls"] %}
+                    <a class="card-text" href={{website}} target="_blank">{{website}}</a>
+                {% endfor %}
+            {% else %}
+                n/a
+            {% endif %}
             <br>
             <br>
-            {% for number in data['officials'][i]["phones"] %}
-                <a href="tel:+" + {{number.strip(' (-)')}} class="btn btn-primary">Call</a>
-            {% endfor %}
+            {% if data['officials'][i].get("phones") is not none %}
+                {% for number in data['officials'][i]["phones"] %}
+                    <a href="tel:+" + {{number.strip(' (-)')}} class="btn btn-primary">Call</a>
+                {% endfor %}
+            {% else %}
+            {% endif %}
             <br>
             <br>
         
@@ -48,14 +59,18 @@
             <div style="line-height: 1.6;">
             Mailing Address:
             <!-- {{data['officials'][i]["address"]|join()|join('')}} -->
-            {% for address in data['officials'][i]["address"] %}
-            {% for address_line in address %}
-                <p class="card-text" style="margin:0;">{{address[address_line]}}</p>
-                {#<p class="card-text">{{address_line['line2']}}</p>
-                <p class="card-text">{{address_line['line3']}}</p>
-                <p class="card-text">{{address_line['city']}}, {{address_line['state']}}, {{address_line['zip']}}</p>#}
-            {% endfor %}
-            {% endfor %}
+            {% if data['officials'][i].get("address") is not none %}
+                {% for address in data['officials'][i]["address"] %}
+                {% for address_line in address %}
+                    <p class="card-text" style="margin:0;">{{address[address_line]}}</p>
+                    {#<p class="card-text">{{address_line['line2']}}</p>
+                    <p class="card-text">{{address_line['line3']}}</p>
+                    <p class="card-text">{{address_line['city']}}, {{address_line['state']}}, {{address_line['zip']}}</p>#}
+                {% endfor %}
+                {% endfor %}
+            {% else %}
+                n/a
+            {% endif %}
             </div>
             <br>
         
@@ -77,9 +92,9 @@
             <div class="card-footer">
             <p class="font-italic">{{title["name"]}}</p>
             {% if "Democratic Party" in data["officials"][i]["party"] %}
-                <i class="fas fa-democrat icon-large" style="color:blue;"></i>
+                <a href="https://democrats.org/" target="_blank"><i class="fas fa-democrat icon-large" style="color:blue;"></i></a>
             {% else %}
-                <i class="fas fa-republican icon-large" style="color:red;"></i>
+                <a href="https://www.gop.gov/" target="_blank"><i class="fas fa-republican icon-large" style="color:red;"></i></a>
             {% endif %}
             </div>
         </div>
