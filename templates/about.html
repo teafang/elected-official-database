@@ -17,6 +17,58 @@
             <a class="btn btn-primary btn-lg" href="../index" role="button">Search Now</a>
         </div>
     </div>
+
+    <hr class="my-4">
+
+    <div class="jumbotron spacer-large" id="how-it-works">
+            <h3 class="font-italic text-center font-weight-light">How it works</h3>
+            <h6 class="text-center">Hover over each part of this sample official's information to find out how it works.</h6>
+    </div>
+    <div class="col-3 mx-auto" style="margin-bottom:20px">
+    <div class="card border-dark">
+        <div class="card-header" style="padding-top:20px;">
+            <h5 class="card-title"><a data-toggle="popover" title="Official's name" data-trigger="hover" data-container="body">John Doe</a></h5>
+        </div>
+        <div class="card-body">
+    
+    <!-- Phone and website -->
+
+        Phone:
+        <a class="card-text" data-toggle="popover" title="Official's phone number(s)" data-content="Click here to call their number(s)." data-trigger="hover" data-container="body">(123) 456-7890</a>
+        <br>
+        Website:
+        <a class="card-text" data-toggle="popover" title="Official's website(s)" data-content="Click here to visit their website(s)." data-trigger="hover" data-container="body">website.com</a>
+        <br>
+        <br>
+        <a class="btn btn-primary" data-toggle="popover" title="Official's primary number" data-content="Click here to call their primary number." data-trigger="hover" data-container="body">Call</a>
+        <br>
+        <br>
+    
+    <!-- Address -->
+
+        <div style="line-height: 1.6;">
+        Mailing Address:
+        <p class="card-text" style="margin:0;"><a data-toggle="popover" title="Official's office address" data-trigger="hover" data-container="body">
+            652 Sleepy Hollow Lane
+            Vineland, NJ 08360
+            </a></p>
+        </div>
+        <br>
+    
+    <!-- Social Media Icons -->
+        <div>
+            <a data-toggle="popover" title="Official's Facebook" data-content="Click here to visit their Facebook page." data-trigger="hover" data-container="body"><i class="fab fa-facebook fa-3x" style="color:#0275d8;"></i></a>
+            <a data-toggle="popover" title="Official's Twitter" data-content="Click here to visit their Twitter page." data-trigger="hover" data-container="body"><i class="fab fa-twitter fa-3x" style="color: #1DA1F2;"></i></a>
+            <a data-toggle="popover" title="Official's Youtube" data-content="Click here to visit their YouTube account." data-trigger="hover" data-container="body"><i class="fab fa-youtube fa-3x" style="color: #FF0000;"></i></a>
+        </div>
+        </div>
+    
+    <!-- Card Footer -->
+        <div class="card-footer">
+        <p class="font-italic">Commissioner</p>
+        <a href="#" target="_blank"><i class="fas fa-democrat icon-large" style="color:blue;"></i></a>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

@@ -78,7 +78,7 @@
             <div>
             {% for socials in data['officials'][i]['channels'] %}
                 {% if 'Facebook' in socials['type'] %}
-                    <a href=https://www.facebook.com/{{socials['id']}} target="_blank"><i class="fab fa-facebook fa-3x"></i></a>
+                    <a href=https://www.facebook.com/{{socials['id']}} target="_blank"><i class="fab fa-facebook fa-3x" style="color:#0275d8;"></i></a>
                 {% elif 'Twitter' in socials['type'] %}
                     <a href=https://www.twitter.com/{{socials['id']}} target="_blank"><i class="fab fa-twitter fa-3x" style="color: #1DA1F2;"></i></a>
                 {% elif 'YouTube' in socials['type'] %}
