@@ -51,7 +51,6 @@ for member in members:
     else:
         members_id[f"{member['first_name']} {member['middle_name'][0]}. {member['last_name']}"] = member["id"]
 
-
 # -- Initialization section --
 app = Flask(__name__)
 
@@ -127,3 +126,7 @@ def propublica():
 @app.route('/about',methods=["GET"])
 def about_page():
     return render_template("about.html")
+
+@app.route('/resources',methods=["GET"])
+def resources_page():
+    return render_template("resources.html")
