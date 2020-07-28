@@ -55,17 +55,6 @@ propublica_data = r.json()
 # -- Initialization section --
 app = Flask(__name__)
 
-address_to_officials = {
-    '123 Chambers St':['Chuck Schumer','Kirsten Gillibrand','Bill de Blasio'],
-    '456 Main St':['Kirsten Gillibrand','Chuck Schumer'],
-}
-
-senator_info = {
-    'Chuck Schumer':{'name':'Chuck Schumer','office':'Senator'},
-    'Kirsten Gillibrand':{'name':'Kirsten Gillibrand','office':'Senator'},
-    'Bill de Blasio':{'name':'Bill de Blasio','office':'Mayor'},
-}
-
 # -- Routes section --
 @app.route('/')
 @app.route('/index')
@@ -105,11 +94,18 @@ def propublica():
         data = {}
         members = propublica_data['results'][0]['members']
         for member in members:
-            for key in member:
-                data[member['first_name']+member['last_name']+key] = member[key]
+            if member['middle_name']==None:
+                data[f"{member['first_name']} {member['last_name']}"] = member["id"]
+            else:
+                data[f"{member['first_name']} {member['middle_name'][0]}. {member['last_name']}"] = member["id"]
         print(data)
-    return render_template("testing_propublica_api.html", data=data) ## change this to the real html file later
-        # form = request.form
+        return render_template("testing_propublica_api.html", data=data) ## change this to the real html file later
+        
+            # for key in member:
+            #     if member['middle_name']==None:
+            #         data[f"{member['first_name']} {member['last_name']} {key}"] = member[key]
+            #     else:
+            #         data[f"{member['first_name']} {member['middle_name']} {member['last_name']} {key}"] = member[key]# form = request.form
         # address = form["address"].replace(' ','%20')
         # API_URL = f"{API_endpoint}/{API_request}?{API_query}={address}&key={GOOGLE_CIVIC_API_KEY}"
         # # senator = address_to_officials[address]
