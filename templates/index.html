@@ -14,10 +14,10 @@
             }
 
             .jumbotron {
-                padding: 50px 25px;
+                padding: 40px 25px;
                 font-family: Helvetica;
-                margin-top: 20px;
-                margin-left: 20px;
+                margin-top: 15px;
+                margin-left: 15px;
                 margin-right: 20px;
             }
 
@@ -56,6 +56,11 @@
                     opacity: 1; 
                 } 
             } 
+
+            .carousel-item {
+                height: 570px;
+            }
+
         </style>
 
         <!-- <div class="logo">
@@ -83,12 +88,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="jumbotron col-6 bg-light">
+                <div class="jumbotron col-6 bg-white">
                     <h1 class="display-4">Welcome to Open Aisle</h1>
+                    <p class="lead"><strong>You input a street address, we give you your elected officials' information</strong></p>
                     <p class="lead">We aim to increase civic participation by making elected officials' contact information and social media easily accessible at the federal, state, and local level. Stay informed and get engaged!</p>
                     <hr class="my-4">
                     <p>Questions? Contact us at openaisle@gmail.com</p>
-                    <a class="btn btn-primary btn-lg" href="../index" role="button">Search Now</a>
+                    <a class="btn btn-primary btn-lg" href="/#search-now" role="button" style="background-color: #ff9c9c; border: #ff9c9c;">Search Now</a>
                 </div>
             </div>
         </div>
@@ -99,13 +105,13 @@
             <h3 class="font-italic text-center font-weight-light">Stay informed and <strong>get engaged!</strong></h3>
         </div>
 
-        <div class="content-main spacer-large container">
+        <div class="content-main spacer-large container" id="search-now">
             <div class="row">
         <!-- Form for address -->
                 <div class="col-6 form-box border border-dark">
                 <form method="POST" action="/results" align="center">
                     <div class="form-group" align="center">
-                        <label class="font-weight-light" for="address"><h1>Welcome! <small class="font-weight-light">Please enter your street address or ZIP Code</small></h1></label>
+                        <label class="font-weight-light" for="address"><h1>Welcome! <small class="font-weight-light">Please enter your street address or ZIP code</small></h1></label>
                         <input type="text" class="form-control w-50 with-spacer-small" name="address" width=50%>
                         <small class="form-text text-muted">We'll never share your address with anyone else.</small>
                     </div>
