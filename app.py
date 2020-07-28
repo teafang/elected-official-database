@@ -42,29 +42,17 @@ API_URL = f"{API_ENDPOINT}/{congress}/{chamber}/members.json"
 r = requests.get(API_URL,headers=API_AUTH)
 # We get the data from the request using .json()
 propublica_data = r.json()
-# Here, we're getting a list of members using the documentation
-# WE need to access a dictionary, then a list, then another dictionary
-# This gives us a list of all members of the house
-# print(propublica_data['results'])
-# members = propublica_data['results'][0]['members']
-# for member in members:
-#     for key in member:
-#         print(f"{key}: {member[key]}")
+# generating a list of all reps' names + their ProPublica ID
+members = propublica_data['results'][0]['members']
+for member in members:
+    if member['middle_name']==None:
+        data[f"{member['first_name']} {member['last_name']}"] = member["id"]
+    else:
+        data[f"{member['first_name']} {member['middle_name'][0]}. {member['last_name']}"] = member["id"]
 
 
 # -- Initialization section --
 app = Flask(__name__)
-
-address_to_officials = {
-    '123 Chambers St':['Chuck Schumer','Kirsten Gillibrand','Bill de Blasio'],
-    '456 Main St':['Kirsten Gillibrand','Chuck Schumer'],
-}
-
-senator_info = {
-    'Chuck Schumer':{'name':'Chuck Schumer','office':'Senator'},
-    'Kirsten Gillibrand':{'name':'Kirsten Gillibrand','office':'Senator'},
-    'Bill de Blasio':{'name':'Bill de Blasio','office':'Mayor'},
-}
 
 # -- Routes section --
 @app.route('/')
@@ -80,7 +68,6 @@ def results():
         form = request.form
         address = form["address"].replace(' ','%20')
         API_URL = f"{API_endpoint}/{API_request}?{API_query}={address}&key={GOOGLE_CIVIC_API_KEY}"
-        # senator = address_to_officials[address]
         r = requests.get(API_URL)
         data_all=r.json()
         data={
@@ -88,8 +75,8 @@ def results():
             'officials':data_all.get('officials'),
         }
         if data['offices'] and data['officials']:
-            print(data)
-            print(API_URL)
+            # print(data)
+            # print(API_URL)
             return render_template("results.html", data=data)
         else:
             data = {
@@ -105,11 +92,18 @@ def propublica():
         data = {}
         members = propublica_data['results'][0]['members']
         for member in members:
-            for key in member:
-                data[member['first_name']+member['last_name']+key] = member[key]
+            if member['middle_name']==None:
+                data[f"{member['first_name']} {member['last_name']}"] = member["id"]
+            else:
+                data[f"{member['first_name']} {member['middle_name'][0]}. {member['last_name']}"] = member["id"]
         print(data)
-    return render_template("testing_propublica_api.html", data=data) ## change this to the real html file later
-        # form = request.form
+        return render_template("testing_propublica_api.html", data=data) ## change this to the real html file later
+        
+            # for key in member:
+            #     if member['middle_name']==None:
+            #         data[f"{member['first_name']} {member['last_name']} {key}"] = member[key]
+            #     else:
+            #         data[f"{member['first_name']} {member['middle_name']} {member['last_name']} {key}"] = member[key]# form = request.form
         # address = form["address"].replace(' ','%20')
         # API_URL = f"{API_endpoint}/{API_request}?{API_query}={address}&key={GOOGLE_CIVIC_API_KEY}"
         # # senator = address_to_officials[address]
