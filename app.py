@@ -75,7 +75,7 @@ def index():
 @app.route('/results',methods=["POST","GET"])
 def results():
     if request.method=="GET":
-        return "you're getting your elected officials page"
+        return "You're getting your elected officials page"
     else:
         form = request.form
         address = form["address"].replace(' ','%20')
@@ -128,3 +128,7 @@ def propublica():
         #         "error_message":"Invalid address, please try again in homepage."
         #     }
         #     return render_template("invalid_address.html",data=data)
+
+@app.route('/about',methods=["GET"])
+def about_page():
+    return render_template("about.html")
