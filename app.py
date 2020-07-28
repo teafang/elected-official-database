@@ -44,12 +44,11 @@ r = requests.get(API_URL,headers=API_AUTH)
 propublica_data = r.json()
 # generating a list of all reps' names + their ProPublica ID
 members = propublica_data['results'][0]['members']
-members_id = {}
 for member in members:
     if member['middle_name']==None:
-        members_id[f"{member['first_name']} {member['last_name']}"] = member["id"]
+        data[f"{member['first_name']} {member['last_name']}"] = member["id"]
     else:
-        members_id[f"{member['first_name']} {member['middle_name'][0]}. {member['last_name']}"] = member["id"]
+        data[f"{member['first_name']} {member['middle_name'][0]}. {member['last_name']}"] = member["id"]
 
 
 # -- Initialization section --
@@ -127,3 +126,7 @@ def propublica():
 @app.route('/about',methods=["GET"])
 def about_page():
     return render_template("about.html")
+
+@app.route('/resources',methods=["GET"])
+def resources_page():
+    return render_template("resources.html")
