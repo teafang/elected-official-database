@@ -11,6 +11,7 @@
         <style>
             jumbotron, content-main {
                 margin: 20px;
+                margin-bottom: 60px;
             }
             logo {
                 margin-top: 20px;
@@ -34,8 +35,9 @@
 
             .form-box {
                 padding-top: 40px;
-                padding-left: 50px;
-                padding-right: 50px;
+                padding-left: 60px;
+                padding-right: 60px;
+                padding-bottom: 60px;
                 border-radius: 15px;
             }
 
@@ -61,23 +63,9 @@
             } 
 
             .carousel-item {
-                height: 570px;
+                height: 550px;
             }
         </style>
-
-        <!-- <div class="logo">
-            <br>
-            <br>
-            <div class="with-spacer-small">
-            </div>
-            <div class="row justify-content-center">
-                <div>
-                    <img style="width: 40rem" src="../static/images/logo.png"></img>
-                </div>
-            </div>
-            <br>
-            <br>
-        </div> -->
 
         <div class="container" style="margin-top: 40px;">
             <div class="row">
@@ -99,6 +87,7 @@
                 </div>
             </div>
         </div>
+        <br>
 
             <!-- Grey box letters -->
         <div class="jumbotron spacer-large" style="margin-left:35px; margin-right:35px;">
@@ -109,32 +98,33 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <h3 class="font-italic font-weight-light">We aim to counter this problem through</h3>
-                    <h3 class="font-italic font-weight-light">democratizing access to elected officials.</h3>
-                    <h3 class="font-italic font-weight-light">Stay informed and <strong>get engaged!</strong></h3>
+                    <h3 class="font-italic font-weight-light">Do you know who your elected officials are?</h3>
+                    <h3 class="font-italic font-weight-light">Find out below, so you can</h3>
+                    <h3 class="font-italic font-weight-light">stay informed and <strong>get engaged!</strong></h3>
                 </div>
             </div>
         </div>
 
-        <div class="content-main spacer-large container" id="search-now">
+        <div class="content-main spacer-large container" id="search-now" style="width: 100%; margin-bottom: 60px; padding-top: 65px; padding-bottom: 70px;">
             <div class="row">
         <!-- Form for address -->
                 <div class="col-6 form-box border border-dark">
-                <form method="POST" action="/results" align="center">
+                    <br>
+                    <br>
+                <form method="POST" action="/results">
                     <div class="form-group" align="center">
-                        <label class="font-weight-light" for="address"><h1><small class="font-weight-light">Please enter your street address or ZIP code</small></h1></label>
-                        <input type="text" class="form-control w-50 with-spacer-small" name="address" width=50%>
+                        <label class="font-weight-light" for="address"><h1 class="font-weight-light">Please enter your street address or ZIP code</h1></label>
+                        <br>
+                        <br>
+                        <input type="text" class="form-control w-50 with-spacer-small" name="address" width=70%>
                         <small class="form-text text-muted">We'll never share your address with anyone else.</small>
                     </div>
                     <br>
                     <hr class="my-4">
                     <br>
-                    <div class="w-25 mx-auto">
-                        <p class="lead">
-                            <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
-                        </p>
+                    <div class="w-50 mx-auto">
+                        <button type="submit" class="btn btn-outline-dark btn-block" style="padding: 10px;">Submit</button>
                     </div>
-                    
                 </form>
                 </div>
 

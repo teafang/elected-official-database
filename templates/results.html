@@ -8,7 +8,7 @@
     <h1 class="display-4">Your Elected Officials</h1>
     <p class="text-center lead font-italic" style="margin-top:25px; margin-bottom: 0px; margin-right: 20rem; margin-left: 20rem;">Here are your elected officials at the national, state, and local level.</p>
     <p class="text-center lead" style="margin-bottom:0px; margin-right:20rem; margin-left: 20rem;">Call, visit their website, find social media, or mail to their address.</p>
-    <p class="text-center lead" style="margin-top: 0px; margin-right: 20rem; margin-left: 20rem;">You can also see Congress-member votes by clicking on the "Votes" button.</p>
+    <p class="text-center lead" style="margin-top: 0px; margin-right: 20rem; margin-left: 20rem;">You can also see what your Congress-member has voted for by clicking on the <strong>"Votes"</strong> button.</p>
 </div>
 
 <!-- Testing API integration -->
@@ -51,7 +51,7 @@
             <br>
             {% if data['officials'][i].get("phones") is not none %}
                 {% for number in data['officials'][i]["phones"] %}
-                    <a href="tel:+" + {{number.strip(' (-)')}} class="btn btn-outline-dark">Call</a>
+                    <a href="tel:+" + {{number.strip(' (-)')}} class="btn btn-outline-dark" style="background-color: #fdc2c2;">Call</a>
                 {% endfor %}
             {% else %}
             {% endif %}
@@ -59,14 +59,14 @@
                 <form method="POST" action="/propublica_api">
                     <input type="hidden" name="representative" value="{{title['divisionId']}}">
                     {# <input type="hidden" name="district" value="{{}}"> #}
-                    <button type="submit" class="btn btn-outline-dark">Votes</button>
+                    <button type="submit" class="btn btn-outline-dark" style="background-color: #c2ebfd">Votes</button>
                 </form>
             {% endif %}
             {% if "U.S. Senator" in title['name'] %}
                 <form method="POST" action="/propublica_api">
                     <input type="hidden" name="senator" value="{{title['divisionId']}}">
                     {# <input type="hidden" name="district" value="{{}}"> #}
-                    <button type="submit" class="btn btn-outline-dark">Votes</button>
+                    <button type="submit" class="btn btn-outline-dark" style="background-color: #c2ebfd">Votes</button>
                 </form>
             {% endif %}
             <br>
