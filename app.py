@@ -90,39 +90,16 @@ def propublica():
     if request.method=="GET":
         return "you're getting the representative page"
     else:
-        data = {}
-        members = propublica_data['results'][0]['members']
-        for member in members:
-            if member['middle_name']==None:
-                data[f"{member['first_name']} {member['last_name']}"] = member["id"]
-            else:
-                data[f"{member['first_name']} {member['middle_name'][0]}. {member['last_name']}"] = member["id"]
-        print(data)
-        return render_template("testing_propublica_api.html", data=data) ## change this to the real html file later
+        # data = {}
+        # members = propublica_data['results'][0]['members']
+        # for member in members:
+        #     if member['middle_name']==None:
+        #         data[f"{member['first_name']} {member['last_name']}"] = member["id"]
+        #     else:
+        #         data[f"{member['first_name']} {member['middle_name'][0]}. {member['last_name']}"] = member["id"]
+        # print(data)
         
-            # for key in member:
-            #     if member['middle_name']==None:
-            #         data[f"{member['first_name']} {member['last_name']} {key}"] = member[key]
-            #     else:
-            #         data[f"{member['first_name']} {member['middle_name']} {member['last_name']} {key}"] = member[key]# form = request.form
-        # address = form["address"].replace(' ','%20')
-        # API_URL = f"{API_endpoint}/{API_request}?{API_query}={address}&key={GOOGLE_CIVIC_API_KEY}"
-        # # senator = address_to_officials[address]
-        # r = requests.get(API_URL)
-        # data_all=r.json()
-        # data={
-        #     'offices':data_all.get('offices'),
-        #     'officials':data_all.get('officials'),
-        # }
-        # if data['offices'] and data['officials']:
-        #     print(data)
-        #     print(API_URL)
-        #     return render_template("testing_propublica_api.html", data=data) ## change this to a different html file later
-        # else:
-        #     data = {
-        #         "error_message":"Invalid address, please try again in homepage."
-        #     }
-        #     return render_template("invalid_address.html",data=data)
+        return render_template("testing_propublica_api.html", data=data) ## change this to the real html file later
 
 @app.route('/about',methods=["GET"])
 def about_page():
