@@ -47,9 +47,16 @@
             <br>
             {% if data['officials'][i].get("phones") is not none %}
                 {% for number in data['officials'][i]["phones"] %}
-                    <a href="tel:+" + {{number.strip(' (-)')}} class="btn btn-primary">Call</a>
+                    <a href="tel:+" + {{number.strip(' (-)')}} class="btn btn-outline-dark">Call</a>
                 {% endfor %}
             {% else %}
+            {% endif %}
+            {% if "U.S. Representative"==title['name'] or "U.S. Senator" in title['name'] %}
+                <form method="POST" action="/propublica_api">
+                    <input type="hidden" name="state" value="{{title['divisionId']}}">
+                    {# <input type="hidden" name="district" value="{{}}"> #}
+                    <button type="submit" class="btn btn-outline-dark">Votes</button>
+                </form>
             {% endif %}
             <br>
             <br>
