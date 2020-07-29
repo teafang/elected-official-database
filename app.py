@@ -7,6 +7,7 @@ import requests
 import os
 from dotenv import load_dotenv
 load_dotenv()
+import logging
 
 ### GOOGLE CIVIC API
 # load API key from .env
@@ -67,14 +68,20 @@ def results():
     else:
         form = request.form
         address = form["address"].replace(' ','%20')
+        # if len(address)==5:
+            ## assume address is only a zipcode
+            # API_URL = f"{API_endpoint}/{API_request}?{API_query}={address}&key={GOOGLE_CIVIC_API_KEY}"
+        # else:
+            ## assume address is a full address
         API_URL = f"{API_endpoint}/{API_request}?{API_query}={address}&key={GOOGLE_CIVIC_API_KEY}"
         r = requests.get(API_URL)
         data_all=r.json()
+        print("Get to {0} return statuscode {1}".format(API_URL,r.status_code))
         data={
             'offices':data_all.get('offices'),
             'officials':data_all.get('officials'),
         }
-        print(data_all.get('offices'))
+        # print(data_all.get('offices'))
         if data['offices'] and data['officials']:
             # print(data)
             # print(API_URL)
@@ -114,10 +121,10 @@ def propublica():
             r = requests.get(API_URL,headers=API_AUTH)
             # We get the data from the request using .json()
             propublica_data = r.json()
-            r = requests.get(propublica_data["results"][0]['api_uri'],headers=API_AUTH)
-            # We get the data from the request using .json()
-            propublica_data2 = r.json()
-        return render_template("testing_propublica_api.html", data=propublica_data2) ## change this to the real html file later
+            # r = requests.get(propublica_data["results"][0]['id'],headers=API_AUTH)
+            # propublica_data2 = r.json()
+            data["id"] = propublica_data["results"][0]["id"]
+        return render_template("testing_propublica_api.html", data=data) ## change this to the real html file later
 
 @app.route('/about',methods=["GET"])
 def about_page():

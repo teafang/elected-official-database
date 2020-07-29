@@ -15,13 +15,13 @@
 <!-- {{data}} -->
 <!-- {{data.offices|length}}
 {{data.officials|length}} -->
-<div class="row" style="margin:10px;">
+<div class="row" style="padding-left: 6rem; margin:10px;">
     {% for title in data["offices"] %}
         {% for i in title["officialIndices"] %}
     
     <!-- Cards -->
 
-    <div class="col-3" style="margin-bottom:20px">
+    <div class="col-3 card-deck" style="margin-bottom:20px">
         <div class="card border-dark">
             <div class="card-header" style="padding-top:20px;">
                 <h5 class="card-title">{{data["officials"][i]["name"]}}</h5>
