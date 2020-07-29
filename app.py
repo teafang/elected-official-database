@@ -92,7 +92,7 @@ def results():
             }
             return render_template("invalid_address.html",data=data)
 
-@app.route('/propublica_api',methods=["POST","GET"])
+@app.route('/votes',methods=["POST","GET"])
 def propublica():
     if request.method=="GET":
         return "you're getting the representative page"
@@ -126,7 +126,7 @@ def propublica():
             votes_API_URL = f"https://api.propublica.org/congress/v1/members/{member_id}/votes.json"
             r = requests.get(votes_API_URL,headers=API_AUTH)
             data = r.json()['results'][0]['votes']
-        return render_template("testing_propublica_api.html", data=data, name=name) ## change this to the real html file later
+        return render_template("votes.html", data=data, name=name) ## change this to the real html file later
 
 @app.route('/about',methods=["GET"])
 def about_page():
