@@ -68,6 +68,11 @@ def results():
     else:
         form = request.form
         address = form["address"].replace(' ','%20')
+        # if len(address)==5:
+            ## assume address is only a zipcode
+            # API_URL = f"{API_endpoint}/{API_request}?{API_query}={address}&key={GOOGLE_CIVIC_API_KEY}"
+        # else:
+            ## assume address is a full address
         API_URL = f"{API_endpoint}/{API_request}?{API_query}={address}&key={GOOGLE_CIVIC_API_KEY}"
         r = requests.get(API_URL)
         data_all=r.json()
