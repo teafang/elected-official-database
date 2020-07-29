@@ -74,6 +74,7 @@ def results():
             'offices':data_all.get('offices'),
             'officials':data_all.get('officials'),
         }
+        print(data_all.get('offices'))
         if data['offices'] and data['officials']:
             # print(data)
             # print(API_URL)
