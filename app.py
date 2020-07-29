@@ -90,7 +90,7 @@ def propublica():
     if request.method=="GET":
         return "you're getting the representative page"
     else:
-        # data = {}
+        data = {}
         # members = propublica_data['results'][0]['members']
         # for member in members:
         #     if member['middle_name']==None:
@@ -98,8 +98,26 @@ def propublica():
         #     else:
         #         data[f"{member['first_name']} {member['middle_name'][0]}. {member['last_name']}"] = member["id"]
         # print(data)
-        
-        return render_template("testing_propublica_api.html", data=data) ## change this to the real html file later
+        form = request.form
+        if form.get("senator"):
+            chamber = "senate"
+            state = form["senator"][-2::]
+            API_URL = f"https://api.propublica.org/congress/v1/members/{chamber}/{state}/current.json"
+            r = requests.get(API_URL,headers=API_AUTH)
+            # We get the data from the request using .json()
+            propublica_data = r.json()
+        elif form.get("representative"):
+            chamber = "house"
+            state = form["representative"][-8:-6:]
+            district = form["representative"][-2::]
+            API_URL = f"https://api.propublica.org/congress/v1/members/{chamber}/{state}/{district}/current.json"
+            r = requests.get(API_URL,headers=API_AUTH)
+            # We get the data from the request using .json()
+            propublica_data = r.json()
+            r = requests.get(propublica_data["results"][0]['api_uri'],headers=API_AUTH)
+            # We get the data from the request using .json()
+            propublica_data2 = r.json()
+        return render_template("testing_propublica_api.html", data=propublica_data2) ## change this to the real html file later
 
 @app.route('/about',methods=["GET"])
 def about_page():
