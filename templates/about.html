@@ -4,30 +4,28 @@
 
 {% block content%}
 
-<div class="container" style="margin-top: 40px;">
-    <div class="row">
-        <div class="col-6">
-            <img style="width: 40rem; padding-right: 50px; margin-top: 60px;" src="../static/images/logo.png"></img>
-        </div>
-        <div class="jumbotron col-6 bg-light">
-            <h1 class="display-4">Welcome to Open Aisle</h1>
-            <p class="lead">We aim to increase civic participation by making elected officials' contact information and social media easily accessible at federal, state, and local level. Stay informed and get engaged!</p>
-            <hr class="my-4">
-            <p>Questions? Contact us at openaisle@gmail.com</p>
-            <a class="btn btn-primary btn-lg" href="../index" role="button">Search Now</a>
-        </div>
-    </div>
+<div class="text-center">
+    <img style="width: 40rem; margin-top: 50px; margin-bottom: 40px;" src="../static/images/logo.png"></img>
+</div>
+
+<div class="jumbotron bg-none text-center" style="margin: 25px; margin-right: 10rem; margin-left: 10rem; background-color: white;">
+    <h1 class="display-4 font-italic text-center font-weight-light">About Open Aisle</h1>
+    <p class="lead">We aim to increase civic participation by making elected officials' contact information and social media easily accessible at federal, state, and local level. Stay informed and get engaged!</p>
+    <hr class="my-4">
+    <p>Questions? Contact us at openaisle@gmail.com</p>
+    <a class="btn btn-primary btn-lg" href="../#search-now" role="button" style="background-color: #ff9c9c; border: #ff9c9c;">Search Now</a>
+</div>
 
     <hr class="my-4" id="how-it-works">
 
-    <div class="jumbotron spacer-large">
-            <h3 class="font-italic text-center font-weight-light">How it works</h3>
-            <h6 class="text-center">Hover over each part of this sample official's information to find out how it works.</h6>
+    <div class="jumbotron spacer-large" style= "margin-right: 70px; margin-left: 70px; background-color: #fdc2c2;">
+            <h1 class="display-4 font-italic text-center font-weight-light">How it works</h1>
+            <p class="text-center lead">Hover your cursor over each part of this sample official's information to find out how it works.</p>
     </div>
     <div class="col-3 mx-auto" style="margin-bottom:20px">
     <div class="card border-dark">
         <div class="card-header" style="padding-top:20px;">
-            <h5 class="card-title"><a data-toggle="popover" title="Official's name" data-trigger="hover" data-container="body">John Doe</a></h5>
+            <h5 class="card-title"><a data-toggle="popover" title="Official's name" data-trigger="hover" data-container="body">Elected Official</a></h5>
         </div>
         <div class="card-body">
     
@@ -40,7 +38,7 @@
         <a class="card-text" data-toggle="popover" title="Official's website(s)" data-content="Click here to visit their website(s)." data-trigger="hover" data-container="body">website.com</a>
         <br>
         <br>
-        <a class="btn btn-primary" data-toggle="popover" title="Official's primary number" data-content="Click here to call their primary number." data-trigger="hover" data-container="body">Call</a>
+        <a class="btn btn-primary" data-toggle="popover" title="Official's primary number" data-content="Click here to call their primary number." data-trigger="hover" data-container="body" style="color:white;">Call</a>
         <br>
         <br>
     
