@@ -4,12 +4,20 @@
 
 {% block content%}
 <div class="jumbotron">
-    <h2 class="display-4" style="text-align:center;">Your Elected Officials: </h2>
+    <h2 class="display-4" style="text-align:center;">{{data["name"]}}'s Votes</h2>
 </div>
 
 <!-- Testing ProPublica API integration -->
-{{data}}
-
+{% for bill in data %}
+{{bill}}
+{% if bill['bill']['title'] is not none %}
+{{bill['bill']['title']}}
+{% endif %}
+<br>
+{{bill['description']}}
+<br>
+<br>
+{% endfor %}
 
 {% endblock %}
 
