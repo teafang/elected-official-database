@@ -51,7 +51,7 @@
             <br>
             {% if data['officials'][i].get("phones") is not none %}
                 {% for number in data['officials'][i]["phones"] %}
-                    <a href="tel:+" + {{number.strip(' (-)')}} class="btn btn-outline-dark" style="background-color: #fdc2c2;">Call</a>
+                    <a href="tel:+" + {{number.strip(' (-)')}} class="btn btn-outline-dark" style="background-color: #fdc2c2; color: black;">Call</a>
                 {% endfor %}
             {% else %}
             {% endif %}
