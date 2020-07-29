@@ -98,9 +98,8 @@ def propublica():
         return "you're getting the representative page"
     else:
         form = request.form
-        data = {
-            "name": form["name"],
-        }
+        name = form["name"]
+        data = {}
         # members = propublica_data['results'][0]['members']
         # for member in members:
         #     if member['middle_name']==None:
@@ -127,7 +126,7 @@ def propublica():
             votes_API_URL = f"https://api.propublica.org/congress/v1/members/{member_id}/votes.json"
             r = requests.get(votes_API_URL,headers=API_AUTH)
             data = r.json()['results'][0]['votes']
-        return render_template("testing_propublica_api.html", data=data) ## change this to the real html file later
+        return render_template("testing_propublica_api.html", data=data, name=name) ## change this to the real html file later
 
 @app.route('/about',methods=["GET"])
 def about_page():
