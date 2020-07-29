@@ -57,6 +57,7 @@
             {% endif %}
             {% if "U.S. Representative"==title['name'] %}
                 <form method="POST" action="/propublica_api">
+                    <input type="hidden" name="name" value="{{data["officials"][i]["name"]}}">
                     <input type="hidden" name="representative" value="{{title['divisionId']}}">
                     {# <input type="hidden" name="district" value="{{}}"> #}
                     <button type="submit" class="btn btn-outline-dark" style="background-color: #c2ebfd">Votes</button>
@@ -64,6 +65,7 @@
             {% endif %}
             {% if "U.S. Senator" in title['name'] %}
                 <form method="POST" action="/propublica_api">
+                    <input type="hidden" name="name" value="{{data["officials"][i]["name"]}}">
                     <input type="hidden" name="senator" value="{{title['divisionId']}}">
                     {# <input type="hidden" name="district" value="{{}}"> #}
                     <button type="submit" class="btn btn-outline-dark" style="background-color: #c2ebfd">Votes</button>
