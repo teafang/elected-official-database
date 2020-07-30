@@ -115,7 +115,6 @@ def propublica():
                     "error_message":"Sorry, there is no information available on the ProPublica API about this representative."
                 }
                 return render_template("invalid.html",data=data)
-                
         elif form.get("representative"):
             chamber = "house"
             state = form["representative"][-8:-6:]

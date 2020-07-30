@@ -80,14 +80,10 @@
 
             <div style="line-height: 1.6;">
             Mailing Address:
-            <!-- {{data['officials'][i]["address"]|join()|join('')}} -->
             {% if data['officials'][i].get("address") is not none %}
                 {% for address in data['officials'][i]["address"] %}
                 {% for address_line in address %}
                     <p class="card-text" style="margin:0;">{{address[address_line]}}</p>
-                    {#<p class="card-text">{{address_line['line2']}}</p>
-                    <p class="card-text">{{address_line['line3']}}</p>
-                    <p class="card-text">{{address_line['city']}}, {{address_line['state']}}, {{address_line['zip']}}</p>#}
                 {% endfor %}
                 {% endfor %}
             {% else %}
