@@ -45,8 +45,16 @@
     </nav>
 
     {% block content%}
-
     {% endblock %}
+
+    {% block footer%}
+    <footer>
+        <div class="jumbotron text-center bg-light" style="margin: 0px; margin-top: 55px; padding-top: 40px; padding-bottom: 30px;">
+            <p class="text-center font-weight-light"><i>Built by Taylor Fang and Charlotte Yee</i> &nbsp; | &nbsp; Data from the Google Civics API and Propublica API</p>
+        </div>
+    </footer>
+
+    {% endblock%}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
