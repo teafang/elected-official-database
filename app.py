@@ -90,7 +90,7 @@ def results():
             data = {
                 "error_message":"Invalid address, please try again in homepage."
             }
-            return render_template("invalid_address.html",data=data)
+            return render_template("invalid.html",data=data)
 
 @app.route('/votes',methods=["POST","GET"])
 def propublica():
@@ -100,32 +100,38 @@ def propublica():
         form = request.form
         name = form["name"]
         data = {}
-        # members = propublica_data['results'][0]['members']
-        # for member in members:
-        #     if member['middle_name']==None:
-        #         data[f"{member['first_name']} {member['last_name']}"] = member["id"]
-        #     else:
-        #         data[f"{member['first_name']} {member['middle_name'][0]}. {member['last_name']}"] = member["id"]
-        # print(data)
         if form.get("senator"):
             chamber = "senate"
             state = form["senator"][-2::]
             member_API_URL = f"https://api.propublica.org/congress/v1/members/{chamber}/{state}/current.json"
             r = requests.get(member_API_URL,headers=API_AUTH)
-            member_id = r.json()["results"][0]["id"]
-            votes_API_URL = f"https://api.propublica.org/congress/v1/members/{member_id}/votes.json"
-            r = requests.get(votes_API_URL,headers=API_AUTH)
-            data = r.json()['results'][0]['votes']
+            if r.json().get("results"):
+                member_id = r.json()["results"][0]["id"]
+                votes_API_URL = f"https://api.propublica.org/congress/v1/members/{member_id}/votes.json"
+                r = requests.get(votes_API_URL,headers=API_AUTH)
+                data = r.json()['results'][0]['votes']
+            else:
+                data = {
+                    "error_message":"Sorry, there is no information available on the ProPublica API about this representative."
+                }
+                return render_template("invalid.html",data=data)
+                
         elif form.get("representative"):
             chamber = "house"
             state = form["representative"][-8:-6:]
             district = form["representative"][-2::]
             member_API_URL = f"https://api.propublica.org/congress/v1/members/{chamber}/{state}/{district}/current.json"
             r = requests.get(member_API_URL,headers=API_AUTH)
-            member_id = r.json()["results"][0]["id"]
-            votes_API_URL = f"https://api.propublica.org/congress/v1/members/{member_id}/votes.json"
-            r = requests.get(votes_API_URL,headers=API_AUTH)
-            data = r.json()['results'][0]['votes']
+            if r.json().get("results"):
+                member_id = r.json()["results"][0]["id"]
+                votes_API_URL = f"https://api.propublica.org/congress/v1/members/{member_id}/votes.json"
+                r = requests.get(votes_API_URL,headers=API_AUTH)
+                data = r.json()['results'][0]['votes']
+            else:
+                data = {
+                    "error_message":"Sorry, there is no information available on the ProPublica API about this representative."
+                }
+                return render_template("invalid.html",data=data)
         return render_template("votes.html", data=data, name=name) ## change this to the real html file later
 
 @app.route('/about',methods=["GET"])
