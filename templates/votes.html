@@ -3,26 +3,45 @@
 {% block title%}{% endblock %}
 
 {% block content%}
-<div class="jumbotron">
-    <h2 class="display-4" style="text-align:center;">{{name}}'s Votes</h2>
+
+<div class="jumbotron text-center bg-light" style="margin-bottom: 40px; padding: 75px;">
+    <h1 class="display-4">{{name}}'s Votes</h1>
+    <p class="text-center lead font-italic" style="margin-top:25px; margin-bottom: 0px; margin-right: 20rem; margin-left: 20rem;">Here are the 20 most recent votes of this member of Congress</p>
+    <p class="text-center lead" style="margin-bottom:0px; margin-right:20rem; margin-left: 20rem;">You can see the date of the vote, title/description, vote, and outcome of the vote</p>
 </div>
 
-<!-- Testing ProPublica API integration -->
+<!-- Cards -->
+
+<div class="row" style="padding-left: 6rem; margin:10px; margin-bottom: 40px;">
 {% for bill in data %}
-{# {{bill}} #}
-{{bill}}
-<h2>Printed-out Information</h2>
-<h3>
-{% if bill['bill']['title'] is not none %}
-{{bill['bill']['title']}}
-{% endif %}
-<br>
-{{bill['description']}}
-<br>
-Vote: {{bill['position']}}
-</h3>
-<br>
-<br>
+    <div class="col-3 card-deck" style="margin-bottom:20px">
+        <div class="card border-dark">
+            <div class="card-header" style="padding-top:20px;">
+                Date: {{bill['date']}}
+            </div>
+        <div class="card-body">
+            {% if bill['bill']['title'] is not none %}
+            <p class="text-center">Title:</p>
+                <h5 class="card-title bg-transparent">{{bill['bill']['title']}}</h5>
+            {% endif %}
+
+            <p class="text-center">Description:</p>
+            <h5 class="card-title">{{bill['description']}}</h5>
+            <br>
+            <div class="text-center">
+                {% if bill['position'] == "Yes" %}
+                <button type="button" class="btn btn-lg btn-primary text-center" style="background-color: #64e764; border: #64e764; font-size: 18px;" disabled>Vote: {{bill['position']}}</button>
+                {% else %}
+                <button type="button" class="btn btn-lg btn-primary text-center" style="background-color: #ff3333; border: #ff3333; font-size: 18px;" disabled>Vote: {{bill['position']}}</button>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <p class="font-italic">Outcome: {{bill['result']}}</p>
+        </div>
+        </div>
+    </div>
 {% endfor %}
 
 {% endblock %}
